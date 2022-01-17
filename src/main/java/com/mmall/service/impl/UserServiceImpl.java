@@ -6,6 +6,7 @@ import com.mmall.common.TokenCache;
 import com.mmall.dao.UserMapper;
 import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
+import com.mmall.util.DateTimeUtil;
 import com.mmall.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -168,6 +169,7 @@ public class UserServiceImpl implements IUserService {
 
     /**
      * 校验是否是管理员
+     *
      * @param user
      * @return
      */

@@ -93,7 +93,7 @@ public class CategoryServiceImpl implements ICategoryService {
                 categoryIdList.add(categoryItem.getId());
             }
         }
-        return ServerResponse.createBySuccess(categorySet);
+        return ServerResponse.createBySuccess(categoryIdList);
     }
 
     /**
