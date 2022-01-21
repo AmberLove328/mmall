@@ -11,12 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 public class TokenCache {
 
-    private static Logger logger = LoggerFactory.getLogger(TokenCache.class);
+    private static final Logger logger = LoggerFactory.getLogger(TokenCache.class);
 
     public static final String TOKEN_PREFIX = "token_";
 
     //LEU算法
-    private static LoadingCache<String, String> localCache = CacheBuilder.newBuilder().initialCapacity(1000).maximumSize(10000).expireAfterAccess(12, TimeUnit.HOURS)
+    private static final LoadingCache<String, String> localCache = CacheBuilder.newBuilder().initialCapacity(1000).maximumSize(10000).expireAfterAccess(12, TimeUnit.HOURS)
             .build(new CacheLoader<String, String>() {
                 //默认的数据加载实现，当调用get取值的时候，如果没有对应的key值，则调用该方法进行加载.
                 @Override
@@ -30,7 +30,7 @@ public class TokenCache {
     }
 
     public static String getKey(String key) {
-        String value = null;
+        String value;
         try {
             value = localCache.get(key);
             if ("null".equals(value)) {

@@ -1,6 +1,5 @@
 package com.mmall.common;
 
-import com.sun.xml.internal.ws.developer.Serialization;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
@@ -53,30 +52,30 @@ public class ServerResponse<T> implements Serializable {
     }
 
     public static <T> ServerResponse<T> createBySuccess() {
-        return new ServerResponse<T>(ResponseCode.SUCCESS.getCode());
+        return new ServerResponse<>(ResponseCode.SUCCESS.getCode());
     }
 
     public static <T> ServerResponse<T> createBySuccessMessage(String msg) {
-        return new ServerResponse<T>(ResponseCode.SUCCESS.getCode(), msg);
+        return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), msg);
     }
 
     public static <T> ServerResponse<T> createBySuccess(T data) {
-        return new ServerResponse<T>(ResponseCode.SUCCESS.getCode(), data);
+        return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), data);
     }
 
     public static <T> ServerResponse<T> createBySuccess(String msg, T data) {
-        return new ServerResponse<T>(ResponseCode.SUCCESS.getCode(), msg, data);
+        return new ServerResponse<>(ResponseCode.SUCCESS.getCode(), msg, data);
     }
 
     public static <T> ServerResponse<T> createByError() {
-        return new ServerResponse<T>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getDesc());
+        return new ServerResponse<>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getDesc());
     }
 
     public static <T> ServerResponse<T> createByErrorMessage(String errorMessage) {
-        return new ServerResponse<T>(ResponseCode.ERROR.getCode(), errorMessage);
+        return new ServerResponse<>(ResponseCode.ERROR.getCode(), errorMessage);
     }
 
-    public static <T> ServerResponse<T> createByErrorCodeMessage(int errorCode, String errorMessage){
-        return new ServerResponse<T>(errorCode, errorMessage);
+    public static <T> ServerResponse<T> createByErrorCodeMessage(int errorCode, String errorMessage) {
+        return new ServerResponse<>(errorCode, errorMessage);
     }
 }
