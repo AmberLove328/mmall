@@ -29,11 +29,11 @@
     </delete>
     <insert id="insert" parameterType="com.mmall.pojo.Cart">
         insert into mmall_cart (id, user_id, product_id,
-                                quantity, checked, create_time,
-                                update_time)
+        quantity, checked, create_time,
+        update_time)
         values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER},
-                #{quantity,jdbcType=INTEGER}, #{checked,jdbcType=INTEGER}, now(),
-                now())
+        #{quantity,jdbcType=INTEGER}, #{checked,jdbcType=INTEGER}, now(),
+        now())
     </insert>
     <insert id="insertSelective" parameterType="com.mmall.pojo.Cart">
         insert into mmall_cart
@@ -110,12 +110,12 @@
     </update>
     <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Cart">
         update mmall_cart
-        set user_id     = #{userId,jdbcType=INTEGER},
-            product_id  = #{productId,jdbcType=INTEGER},
-            quantity    = #{quantity,jdbcType=INTEGER},
-            checked     = #{checked,jdbcType=INTEGER},
-            create_time = #{createTime,jdbcType=TIMESTAMP},
-            update_time = now()
+        set user_id = #{userId,jdbcType=INTEGER},
+        product_id = #{productId,jdbcType=INTEGER},
+        quantity = #{quantity,jdbcType=INTEGER},
+        checked = #{checked,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = now()
         where id = #{id,jdbcType=INTEGER}
     </update>
     <select id="selectCartByUserIdProductId" resultMap="BaseResultMap" parameterType="map">
@@ -137,7 +137,7 @@
         select count(1)
         from mmall_cart
         where checked = 0
-          and user_id = #{userId}
+        and user_id = #{userId}
     </select>
 
     <delete id="deleteByUserIdProductIds" parameterType="map">
@@ -153,14 +153,14 @@
     <update id="checkedOrUncheckedProduct" parameterType="map">
         update mmall_cart
         set checked = #{checked}, update_time = now()
-        where user_id = #{userId
+        where user_id = #{userId}
         <if test="productId != null">
             and product_id = #{productId}
         </if>
     </update>
 
     <select id="selectCartProductCount" resultType="int" parameterType="int">
-        select IFNULL(sum(quantity), 0) as count
+        select IF NULL(sum(quantity), 0) as count
         from mmall_cart
         where user_id = #{userId}
     </select>

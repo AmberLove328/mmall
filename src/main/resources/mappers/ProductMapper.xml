@@ -20,7 +20,7 @@
     <sql id="Base_Column_List">
         id
         , category_id, name, subtitle, main_image, sub_images, detail, price, stock, status,
-    create_time, update_time
+        create_time, update_time
     </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -35,13 +35,13 @@
     </delete>
     <insert id="insert" parameterType="com.mmall.pojo.Product">
         insert into mmall_product (id, category_id, name,
-                                   subtitle, main_image, sub_images,
-                                   detail, price, stock,
-                                   status, create_time, update_time)
+        subtitle, main_image, sub_images,
+        detail, price, stock,
+        status, create_time, update_time)
         values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
-                #{subtitle,jdbcType=VARCHAR}, #{mainImage,jdbcType=VARCHAR}, #{subImages,jdbcType=VARCHAR},
-                #{detail,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER},
-                #{status,jdbcType=INTEGER}, now(), now() })
+        #{subtitle,jdbcType=VARCHAR}, #{mainImage,jdbcType=VARCHAR}, #{subImages,jdbcType=VARCHAR},
+        #{detail,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{stock,jdbcType=INTEGER},
+        #{status,jdbcType=INTEGER}, now(), now() })
     </insert>
     <insert id="insertSelective" parameterType="com.mmall.pojo.Product">
         insert into mmall_product
@@ -164,28 +164,28 @@
     <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Product">
         update mmall_product
         set category_id = #{categoryId,jdbcType=INTEGER},
-            name        = #{name,jdbcType=VARCHAR},
-            subtitle    = #{subtitle,jdbcType=VARCHAR},
-            main_image  = #{mainImage,jdbcType=VARCHAR},
-            sub_images  = #{subImages,jdbcType=VARCHAR},
-            detail      = #{detail,jdbcType=VARCHAR},
-            price       = #{price,jdbcType=DECIMAL},
-            stock       = #{stock,jdbcType=INTEGER},
-            status      = #{status,jdbcType=INTEGER},
-            create_time = #{createTime,jdbcType=TIMESTAMP},
-            update_time = now()
+        name = #{name,jdbcType=VARCHAR},
+        subtitle = #{subtitle,jdbcType=VARCHAR},
+        main_image = #{mainImage,jdbcType=VARCHAR},
+        sub_images = #{subImages,jdbcType=VARCHAR},
+        detail = #{detail,jdbcType=VARCHAR},
+        price = #{price,jdbcType=DECIMAL},
+        stock = #{stock,jdbcType=INTEGER},
+        status = #{status,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        update_time = now()
         where id = #{id,jdbcType=INTEGER}
     </update>
     <select id="selectList" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List"></include>
+        <include refid="Base_Column_List"/>
         from mmall_product
-        order by id asc
+        order by id
     </select>
 
     <select id="selectByNameAndProductId" resultMap="BaseResultMap" parameterType="map">
         select
-        <include refid="Base_Column_List"></include>
+        <include refid="Base_Column_List"/>
         from mmall_product
         <where>
             <if test="productName != null">
@@ -199,7 +199,7 @@
 
     <select id="selectByNameAndCategoryIds" resultMap="BaseResultMap" parameterType="map">
         select
-        <include refid="Base_Column_List"></include>
+        <include refid="Base_Column_List"/>
         from mmall_product
         where status = 1
         <if test="productName != null">
